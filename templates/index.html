@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Lesson Plan Generator{% endblock %}
+
+{% block content %}
+<div class="text-center my-5">
+    <h2>Welcome to the Futuristic Lesson Plan Generator!</h2>
+    <p>Transform textbook chapters into structured lesson plans with a few clicks.</p>
+
+    <!-- Features Section -->
+    <div class="row mt-4">
+        <div class="col-md-4 feature">
+            <h3>Upload PDFs</h3>
+            <p>Easily upload PDF chapters from your textbooks. The app will automatically analyze and extract key concepts for your lesson plan.</p>
+        </div>
+        <div class="col-md-4 feature">
+            <h3>Generate Lesson Plans</h3>
+            <p>Instantly generate structured, comprehensive lesson plans, including an introduction, main content, and class activities.</p>
+        </div>
+        <div class="col-md-4 feature">
+            <h3>Visualize with Illustrations</h3>
+            <p>Add relevant illustrations to your lesson plans for a visually rich experience.</p>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="mt-4">
+        <a href="{{ url_for('register') }}" class="btn btn-custom mx-2">Register</a>
+        <a href="{{ url_for('login') }}" class="btn btn-custom mx-2">Login</a>
+        <a href="{{ url_for('saved_plans') }}" class="btn btn-outline-light mx-2">View Saved Lesson Plans</a>
+    </div>
+
+    <!-- Upload Form -->
+    <div class="mt-5">
+        <h3>Generate a New Lesson Plan</h3>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="pdf_file" class="form-control mb-3" style="max-width: 500px; margin: 0 auto;" required>
+            <button type="submit" class="btn btn-primary">Upload and Generate</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

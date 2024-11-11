@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Saved Lesson Plans{% endblock %}
+
+{% block content %}
+<div class="mt-5">
+    <h2 class="text-center">Saved Lesson Plans</h2>
+    <p class="text-center">Review your previously generated lesson plans below:</p>
+
+    <div id="lesson-plans-container" class="row mt-4">
+        <!-- This section will be populated with lesson plans using JavaScript -->
+    </div>
+</div>
+
+<script>
+    // Load saved lesson plans for the current user
+    function loadSavedLessonPlans() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                const userId = user.uid;
+                getLessonPlans(userId, displayLessonPlans);
+            } else {
+                alert("Please log in to view saved lesson plans.");
+                window.location.href = "/login";
+            }
+        });
+    }
+
+    // Display saved lesson plans in the HTML
+    function displayLessonPlans(lessonPlans) {
+        const container = document.getElementById("lesson-plans-container");
+        container.innerHTML = '';  // Clear previous content
+        if (lessonPlans.length === 0) {
+            container.innerHTML = '<p class="text-center">No saved lesson plans found.</p>';
+            return;
+        }
+
+        lessonPlans.forEach((plan, index) => {
+            const planDiv = document.createElement("div");
+            planDiv.classList.add("col-md-6", "mb-4");
+            planDiv.innerHTML = `
+                <div class="card" style="background-color: #333; color: #fff;">
+                    <div class="card-body">
+                        <h4 class="card-title">Lesson Plan #${index + 1}</h4>
+                        <p><strong>Introduction:</strong> ${plan.introduction}</p>
+                        <p><strong>Main Body:</strong> ${plan.main_body}</p>
+                        <p><strong>Class Activity:</strong> ${plan.class_activity}</p>
+                        <a href="/download_saved_pdf?plan=${index}" class="btn btn-primary mt-3">Download as PDF</a>
+                    </div>
+                </div>
+            `;
+            container.appendChild(planDiv);
+        });
+    }
+
+    // Load saved lesson plans on page load
+    loadSavedLessonPlans();
+</script>
+{% endblock %}

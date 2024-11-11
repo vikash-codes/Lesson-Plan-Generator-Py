@@ -1,0 +1,106 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- base.html -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lesson Plan Generator{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Firebase Configuration -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="{{ url_for('static', filename='js/firebase.js') }}"></script>
+
+</head>
+
+    <style>
+        /* Global Futuristic Styling */
+        body {
+            background: linear-gradient(135deg, #1f4037, #99f2c8);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+        }
+        .header h1 {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .header p {
+            font-size: 1.2em;
+            color: #d4d4d4;
+        }
+        .feature {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .btn-custom {
+            background-color: #ffdd57;
+            color: #1f4037;
+            border: none;
+            font-weight: bold;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        .btn-custom:hover {
+            background-color: #ffca28;
+        }
+    </style>
+</head>
+<body>
+    <!-- base.html 
+    <div class="header">
+        <h1>Lesson Plan Generator</h1>
+        <p>Create engaging lesson plans with ease.</p>
+        <button onclick="logout()" class="btn btn-outline-light btn-sm float-end mt-2">Logout</button>
+    </div>
+
+    -->
+    <!-- Adding new line -->
+
+    <div class="header">
+        <h1>Lesson Plan Generator</h1>
+        <p>Create engaging lesson plans with ease.</p>
+        <p id="user-email" class="text-light"></p>
+        <button onclick="logout()" class="btn btn-outline-light btn-sm float-end mt-2">Logout</button>
+    </div>
+    
+    <script>
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                document.getElementById("user-email").textContent = `Logged in as: ${user.email}`;
+            } else {
+                document.getElementById("user-email").textContent = "";
+            }
+        });
+    </script>
+    
+
+
+
+
+
+    <!-- Main Content Block -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-white mt-5">
+        <p>&copy; {{ year }} Lesson Plan Generator//vikash. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

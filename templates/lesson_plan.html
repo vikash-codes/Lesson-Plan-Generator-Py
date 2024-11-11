@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Generated Lesson Plan{% endblock %}
+
+{% block content %}
+<div class="mt-5">
+    <h2 class="text-center">Generated Lesson Plan</h2>
+
+    <!-- Illustrations Section -->
+    <div class="row my-4 text-center">
+        {% if illustration1 %}
+            <div class="col-md-6">
+                <img src="{{ illustration1 }}" alt="Illustration 1" class="img-fluid rounded">
+            </div>
+        {% endif %}
+        {% if illustration2 %}
+            <div class="col-md-6">
+                <img src="{{ illustration2 }}" alt="Illustration 2" class="img-fluid rounded">
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Lesson Plan Content with Dark Backgrounds for Visibility -->
+    <div class="card mb-4" style="background-color: #333; color: #fff;">
+        <div class="card-body">
+            <h2>Introduction</h2>
+            <p>{{ lesson_plan['introduction'] }}</p>
+        </div>
+    </div>
+
+    <div class="card mb-4" style="background-color: #444; color: #fff;">
+        <div class="card-body">
+            <h2>Main Body</h2>
+            <p>{{ lesson_plan['main_body'] }}</p>
+        </div>
+    </div>
+
+    <div class="card mb-4" style="background-color: #555; color: #fff;">
+        <div class="card-body">
+            <h2>Class Activity</h2>
+            <p>{{ lesson_plan['class_activity'] }}</p>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <a href="/" class="btn btn-secondary me-2">Go Back</a>
+        <a href="/download_pdf" class="btn btn-primary">Download as PDF</a>
+    </div>
+</div>
+{% endblock %}
