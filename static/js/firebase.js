@@ -1,7 +1,7 @@
 // Initialize Firebase
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCX33OTSiC-WqoH8iMIKLkZ8MCDu69KAzw",
+    apiKey: "Your-Api-Key",
     authDomain: "lesson-plan-generator-4cbe8.firebaseapp.com",
     projectId: "lesson-plan-generator-4cbe8",
     storageBucket: "lesson-plan-generator-4cbe8.firebasestorage.app",
@@ -15,7 +15,7 @@ const db = firebase.firestore(); // Initialize Firestore
 
 // Register function
 function register() {
-    console.log("HJHKHDIUHUI    swehjkhsdkhsue ")
+    //console.log("HJHKHDIUHUI    swehjkhsdkhsue ") just checking flow
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
     console.log(email,password)
