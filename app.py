@@ -16,7 +16,7 @@ UNSPLASH_API_KEY = os.getenv("UNSPLASH_API_KEY")
 app = Flask(__name__)
 
 # Directly assign the Unsplash API key since it's hard-coded here
-UNSPLASH_API_KEY = "dAeY_8kgeJ8Dww9_H201Us6vKYYVVqXN5uHiFhNKips"
+UNSPLASH_API_KEY = "Your-UNSPLASH-ACCESS KEY"
 
 def fetch_illustration(keyword):
     url = f"https://api.unsplash.com/photos/random?query={keyword}&client_id={UNSPLASH_API_KEY}"
