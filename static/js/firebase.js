@@ -1,7 +1,7 @@
 // Initialize Firebase
 
 const firebaseConfig = {
-    apiKey: "FIREBASE_API_KEY",
+    apiKey: "AIzaSyCX33OTSiC-WqoH8iMIKLkZ8MCDu69KAzw",
     authDomain: "lesson-plan-generator-4cbe8.firebaseapp.com",
     projectId: "lesson-plan-generator-4cbe8",
     storageBucket: "lesson-plan-generator-4cbe8.firebasestorage.app",
